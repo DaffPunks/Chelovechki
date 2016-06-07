@@ -1,0 +1,367 @@
+@import "node_modules/susy/sass/susy";
+
+@mixin filter-gradient($top, $btm) {
+  background: $top;
+  background: -moz-linear-gradient(top, $top 0%, $btm 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$btm));
+  background: -webkit-linear-gradient(top, $top 0%,$btm 100%);
+  background: -o-linear-gradient(top, $top 0%,$btm 100%);
+  background: -ms-linear-gradient(top, $top 0%,$btm 100%);
+  background: linear-gradient(to bottom, $top 0%,$btm 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$btm',GradientType=0 );
+}
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+$susy: (
+        columns: 12,  // The number of columns in your grid
+        gutters: 0, // The size of a gutter in relation to a single column
+        container: 780px
+);
+
+$line_color_start: rgba(44,82,117,1); //line gradient color
+
+/* CSS Reset */
+* {
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: Arial;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  //@include container;
+  @include filter-gradient(#020d18,#07487e);
+  //height: 1500px;
+  font-family: Arial sans-serif;
+  color: white;
+}
+.wrap {
+  max-width: 1024px;
+  height: inherit;
+  margin: 0 auto;
+  padding-left: 22px;
+  padding-right: 22px;
+  position: relative;
+}
+header, section {
+  width: 100%;
+}
+section {
+  width: 100%;
+  //padding-top: 80px;
+  padding-bottom: 61px;
+  position: relative;
+  text-align: center;
+}
+
+/* --h2 lines-- */
+section h2 {
+  padding-bottom: 20px;
+  font: bold 16px sans-serif;
+  color: #69829a;
+
+  //text-align: center;
+  display: flex;
+  //flex-direction: row;
+  //justify-content: center;
+}
+h2:before,
+h2:after {
+  flex-grow: 1;
+  height: 3px;
+  content: '\a0';
+  background-color: $line_color_start;
+  position: relative;
+  top: 0.5em;
+}
+h2:before {
+  margin-right:10px;
+}
+h2:after {
+  margin-left:10px;
+}
+
+/* -- Title -- */
+header{
+  text-align: center ;
+  padding: 50px 0;
+  font: bold 48px sans-serif;
+  color: white;
+}
+
+/* -- MoneyBox -- */
+.moneystack div{
+  margin-left: -15px;
+  position: relative;
+  display: inline-block;
+}
+.coins .text{
+  padding-top: 2px;
+  font-size: 12px;
+}
+.coin{
+  position: relative;
+  margin: 0 auto;
+  width: 24px;
+  height: 29px;
+  background-image: url("pic/coins.png");
+}
+.clicker {
+  display: inline-block;
+  padding-top: 14px;
+  font-size: 14px;
+}
+.clicker a:visited, .clicker a:link{
+  color: white;
+  border-bottom: 1px dotted white;
+  text-decoration: none;
+}
+.buttons{
+  //display: table;
+  //margin: auto;
+  //padding-left: 62px;
+}
+.b-center{
+  display: inline-block;
+  position: relative;
+  margin:0 auto;
+}
+.b-left{
+  position: absolute;
+  left: -177px;
+  top: 0;
+}
+.b-right{
+  position: absolute;
+  left: 177px;
+  top: 0;
+  width: 165px;
+}
+.button a:link, .button a:visited{
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.button{
+    //display: table-cell;
+    vertical-align: top;
+    //padding-right: 40px;
+}
+.buy-hand, .buy-leg, .buy-cucumber{
+  @include filter-gradient(#94c16c,#16a924);
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 7px 16px;
+  &:hover{
+    background-color: #19d62a;
+  }
+}
+
+/* -- Market -- */
+#staff{
+  padding-bottom: 36px;
+}
+.marketbuttons {
+  padding-top: 23px;
+}
+.sell-hand, .sell-leg, .sell-cucumber{
+  @include filter-gradient(#da5151,#9d2222);
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 6px 15px;
+  &:hover{
+    background-color: #d82d2d;
+  }
+}
+.cost-text{
+  padding-top: 10px;
+  font: 14px Arial;
+}
+.amount{
+  color: #d74545;
+  position: absolute;
+  width: 150px;
+  height: 100px;
+}
+.sellimg{
+  padding-left: 20px;
+  float: left;
+}
+.amount{
+  position: relative;
+  padding-top: 30px;
+  font-size: 36px;
+}
+
+/* -- Production -- */
+#production{
+  padding-bottom: 280px;
+}
+.susy-wrapper{
+  @include container;
+}
+.production-table1{
+  @include span(5);
+}
+.padderone{
+  position: relative;
+  top: 138px;
+}
+.production-table2{
+  @include span(3);
+}
+.paddertwo{
+  position: relative;
+  top: 180px;
+}
+.production-table-man{
+  @include span(4 last);
+  padding-bottom: 100px;
+  position: relative;
+}
+.production-table-man img{
+  position: absolute;
+  right: 0;
+}
+.variable{
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 12pt !important;
+}
+
+input[type="radio"]{
+  display: none;
+  color:white;
+}
+input[type="radio"]:checked + label{
+  //border: black solid 1px;
+  border-bottom: 0px dotted white;
+  -webkit-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.75);
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+input[type="radio"] + label{
+  cursor: pointer;
+  margin-left: 20px;
+  border-bottom: 1px dotted white;
+  background-color: rgba(0,0,0,0);
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+
+.bubble {
+  position: relative;
+  width: 92px;
+  //height: 45px;
+  padding: 8px 7px;
+  background: #ffffff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 10px 0px #616161;
+  -moz-box-shadow: 0px 2px 10px 0px #616161;
+  box-shadow: 0px 2px 10px 0px #616161;
+  font-size: 11px;
+  color: #063761;
+  opacity: 0.75;
+  margin: -20px auto;
+  margin-bottom: 24px;
+  text-align: left;
+}
+.boiler{
+  padding-top: 20px;
+}
+.bubble:after {
+  content: "";
+  position: absolute;
+  bottom: -38px;
+  left: 55px;
+  border-style: solid;
+  border-width: 38px 8px 0;
+  border-color: #ffffff transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+.button-boiler{
+  position: relative;
+  top: -30px
+}
+.button-boiler a:link, .button-boiler a:visited{
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.ingredient{
+  padding-top: 55px;
+  text-align: left;
+}
+.ingredient img{
+  margin-right: 10px;
+}
+
+/* -- Arrow -- */
+.arrow {
+  position: relative;
+  float: left;
+  top: 120px;
+}
+.arrow > i {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 20px solid transparent;
+  border-left: 10px solid #ffffff;
+  left: 0px;
+  top: 0px;
+}
+.arrow-second {
+  position: relative;
+  float: right;
+  top: 120px;
+}
+.arrow-second > i {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 20px solid transparent;
+  border-left: 10px solid #ffffff;
+  left: 0px;
+  top: 0px;
+}
+
+$line_color_start: rgba(44,82,117,1); //line gradient color
+$line_color_stop:  rgba(44,82,117,0);
+@mixin linearGradient($top, $bottom){
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(left,  $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  $top 0%,$bottom 100%); /* IE10+ */
+  background: linear-gradient(to right,  $top 0%,$bottom 100%); /* W3C */
+}
+
+
+
+
+
+
+
