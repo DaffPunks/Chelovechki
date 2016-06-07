@@ -17,7 +17,21 @@
   #{$attribute}: $solid-color;
   #{$attribute}: $color;
 }
-
+@mixin linearGradient($top, $bottom){
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(left,  $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  $top 0%,$bottom 100%); /* IE10+ */
+  background: linear-gradient(to right,  $top 0%,$bottom 100%); /* W3C */
+}
+@mixin buttonGradient($topbot, $middle){
+  background: $middle; /* Old browsers */
+  background: -moz-linear-gradient(top,  $topbot 0%, $middle 50%, $topbot 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  $topbot 0%,$middle 50%,$topbot 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  $topbot 0%,$middle 50%,$topbot 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
 $susy: (
         columns: 12,  // The number of columns in your grid
         gutters: 0, // The size of a gutter in relation to a single column
@@ -25,6 +39,8 @@ $susy: (
 );
 
 $line_color_start: rgba(44,82,117,1); //line gradient color
+$line_color_stop:  rgba(44,82,117,0);
+
 
 /* CSS Reset */
 * {
@@ -81,15 +97,16 @@ h2:after {
   flex-grow: 1;
   height: 3px;
   content: '\a0';
-  background-color: $line_color_start;
   position: relative;
   top: 0.5em;
 }
 h2:before {
   margin-right:10px;
+  @include linearGradient($line_color_stop,$line_color_start);
 }
 h2:after {
   margin-left:10px;
+  @include linearGradient($line_color_start,$line_color_stop);
 }
 
 /* -- Title -- */
@@ -158,9 +175,10 @@ header{
     //display: table-cell;
     vertical-align: top;
     //padding-right: 40px;
+  
 }
 .buy-hand, .buy-leg, .buy-cucumber{
-  @include filter-gradient(#94c16c,#16a924);
+  @include buttonGradient(#94c16c,#16a924);
   font-weight: bold;
   border-radius: 20px;
   padding: 7px 16px;
@@ -177,13 +195,10 @@ header{
   padding-top: 23px;
 }
 .sell-hand, .sell-leg, .sell-cucumber{
-  @include filter-gradient(#da5151,#9d2222);
+  @include buttonGradient(#da5151,#9d2222);
   font-weight: bold;
   border-radius: 20px;
   padding: 6px 15px;
-  &:hover{
-    background-color: #d82d2d;
-  }
 }
 .cost-text{
   padding-top: 10px;
@@ -265,7 +280,7 @@ input[type="radio"] + label{
 
 .bubble {
   position: relative;
-  width: 92px;
+  max-width: 92px;
   //height: 45px;
   padding: 8px 7px;
   background: #ffffff;
@@ -315,48 +330,8 @@ input[type="radio"] + label{
   margin-right: 10px;
 }
 
-/* -- Arrow -- */
-.arrow {
-  position: relative;
-  float: left;
-  top: 120px;
-}
-.arrow > i {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  line-height: 0;
-  border: 20px solid transparent;
-  border-left: 10px solid #ffffff;
-  left: 0px;
-  top: 0px;
-}
-.arrow-second {
-  position: relative;
-  float: right;
-  top: 120px;
-}
-.arrow-second > i {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  line-height: 0;
-  border: 20px solid transparent;
-  border-left: 10px solid #ffffff;
-  left: 0px;
-  top: 0px;
-}
-
-$line_color_start: rgba(44,82,117,1); //line gradient color
-$line_color_stop:  rgba(44,82,117,0);
-@mixin linearGradient($top, $bottom){
-  background: $top; /* Old browsers */
-  background: -moz-linear-gradient(left,  $top 0%, $bottom 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  $top 0%,$bottom 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  $top 0%,$bottom 100%); /* IE10+ */
-  background: linear-gradient(to right,  $top 0%,$bottom 100%); /* W3C */
+.opacit{
+  opacity: 0.5;
 }
 
 

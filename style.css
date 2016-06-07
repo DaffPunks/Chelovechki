@@ -51,15 +51,42 @@ h2:after {
   flex-grow: 1;
   height: 3px;
   content: '\a0';
-  background-color: #2c5275;
   position: relative;
   top: 0.5em; }
 
 h2:before {
-  margin-right: 10px; }
+  margin-right: 10px;
+  background: rgba(44, 82, 117, 0);
+  /* Old browsers */
+  background: -moz-linear-gradient(left, rgba(44, 82, 117, 0) 0%, #2c5275 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(44, 82, 117, 0)), color-stop(100%, #2c5275));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(44, 82, 117, 0) 0%, #2c5275 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(44, 82, 117, 0) 0%, #2c5275 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(44, 82, 117, 0) 0%, #2c5275 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, rgba(44, 82, 117, 0) 0%, #2c5275 100%);
+  /* W3C */ }
 
 h2:after {
-  margin-left: 10px; }
+  margin-left: 10px;
+  background: #2c5275;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #2c5275 0%, rgba(44, 82, 117, 0) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #2c5275), color-stop(100%, rgba(44, 82, 117, 0)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #2c5275 0%, rgba(44, 82, 117, 0) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #2c5275 0%, rgba(44, 82, 117, 0) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #2c5275 0%, rgba(44, 82, 117, 0) 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, #2c5275 0%, rgba(44, 82, 117, 0) 100%);
+  /* W3C */ }
 
 /* -- Title -- */
 header {
@@ -121,14 +148,14 @@ header {
   vertical-align: top; }
 
 .buy-hand, .buy-leg, .buy-cucumber {
-  background: #94c16c;
-  background: -moz-linear-gradient(top, #94c16c 0%, #16a924 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #94c16c), color-stop(100%, #16a924));
-  background: -webkit-linear-gradient(top, #94c16c 0%, #16a924 100%);
-  background: -o-linear-gradient(top, #94c16c 0%, #16a924 100%);
-  background: -ms-linear-gradient(top, #94c16c 0%, #16a924 100%);
-  background: linear-gradient(to bottom, #94c16c 0%, #16a924 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$btm',GradientType=0 );
+  background: #16a924;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #94c16c 0%, #16a924 50%, #94c16c 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #94c16c 0%, #16a924 50%, #94c16c 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #94c16c 0%, #16a924 50%, #94c16c 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   font-weight: bold;
   border-radius: 20px;
   padding: 7px 16px; }
@@ -143,19 +170,17 @@ header {
   padding-top: 23px; }
 
 .sell-hand, .sell-leg, .sell-cucumber {
-  background: #da5151;
-  background: -moz-linear-gradient(top, #da5151 0%, #9d2222 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #da5151), color-stop(100%, #9d2222));
-  background: -webkit-linear-gradient(top, #da5151 0%, #9d2222 100%);
-  background: -o-linear-gradient(top, #da5151 0%, #9d2222 100%);
-  background: -ms-linear-gradient(top, #da5151 0%, #9d2222 100%);
-  background: linear-gradient(to bottom, #da5151 0%, #9d2222 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top', endColorstr='$btm',GradientType=0 );
+  background: #9d2222;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #da5151 0%, #9d2222 50%, #da5151 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #da5151 0%, #9d2222 50%, #da5151 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #da5151 0%, #9d2222 50%, #da5151 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   font-weight: bold;
   border-radius: 20px;
   padding: 6px 15px; }
-  .sell-hand:hover, .sell-leg:hover, .sell-cucumber:hover {
-    background-color: #d82d2d; }
 
 .cost-text {
   padding-top: 10px;
@@ -243,7 +268,7 @@ input[type="radio"] + label {
 
 .bubble {
   position: relative;
-  width: 92px;
+  max-width: 92px;
   padding: 8px 7px;
   background: #ffffff;
   -webkit-border-radius: 5px;
@@ -291,35 +316,7 @@ input[type="radio"] + label {
 .ingredient img {
   margin-right: 10px; }
 
-/* -- Arrow -- */
-.arrow {
-  position: relative;
-  float: left;
-  top: 120px; }
-
-.arrow > i {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  line-height: 0;
-  border: 20px solid transparent;
-  border-left: 10px solid #ffffff;
-  left: 0px;
-  top: 0px; }
-
-.arrow-second {
-  position: relative;
-  float: right;
-  top: 120px; }
-
-.arrow-second > i {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  line-height: 0;
-  border: 20px solid transparent;
-  border-left: 10px solid #ffffff;
-  left: 0px;
-  top: 0px; }
+.opacit {
+  opacity: 0.5; }
 
 /*# sourceMappingURL=style.css.map */

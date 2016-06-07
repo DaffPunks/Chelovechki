@@ -20,10 +20,10 @@
                 <div class="moneystack">
                     <div class="coin" id="coin1" style="margin-left: 0; z-index: 100"></div></div>
                 <div class="text" id="coins-count">
-                    1 coins
+                    Нет монет
                 </div>
                 <div class="clicker" id="clicker">
-                    <a href="javascript:void(0);">Добавить одну монету</a>
+                    <a href="#a">Добавить одну монету</a>
                 </div>
             </div>
         </div>
@@ -32,7 +32,6 @@
         <div class="wrap">
             <h2>Рынок ингредиентов</h2>
             <div class="buttons">
-
                 <div class="button b-center">
                     <a class="buy-leg" id="buyleg" href="javascript:void(0);">Купить ножку</a>
                     <div class="cost-text">за 7 монет</div>
@@ -59,20 +58,20 @@
 
                     <img src="pic/leg.png" class="sellimg">
                     <div class="amount leg-amount" id="legamount">X 0</div>
-                    <a class="sell-leg" href="javascript:void(0);" onclick="sell(5,2)">Продать одну</a>
+                    <a class="sell-leg" id="sellleg" href="javascript:void(0);" >Продать одну</a>
                     <div class="cost-text">за 5 монет</div>
 
                     <div class="button b-left">
                         <img src="pic/arm.png" class="sellimg">
                         <div class="amount hand-amount" id="handamount">X 0</div>
-                        <a class="sell-hand" href="javascript:void(0);" onclick="sell(3,1)">Продать одну</a>
+                        <a class="sell-hand" id="sellhand" href="javascript:void(0);" >Продать одну</a>
                         <div class="cost-text">за 3 монет</div>
                     </div>
 
                     <div class="button b-right">
                         <img src="pic/cucumber.png" class="sellimg">
                         <div class="amount cucumber-amount" id="cucumberamount">X 0</div>
-                        <a class="sell-cucumber" href="javascript:void(0);" onclick="sell(15,3)">Продать один</a>
+                        <a class="sell-cucumber" id="sellcucumber" href="javascript:void(0);" >Продать один</a>
                         <div class="cost-text">за 15 монет</div>
                     </div>
 
@@ -86,26 +85,28 @@
             <div class="susy-wrapper">
                 <div class="production-table1">
                     <div class="padderone">
-                        <div class="variable">
-                            <p style="float: left">Пол:</p>
-                            <input id="men" type="radio" name="sex" value="men" class="radiob" checked/>
-                            <label for="men">мужчина</label>
-                            <input id="women" type="radio" name="sex" value="women" class="radiob" />
-                            <label for="women">женщина</label>
-                        </div>
-                        <div class="variable">
-                            <p style="float: left">Цвет:</p>
-                            <input type="radio" name="color" value="white" id="white" class="radiob" checked/>
-                            <label for="white">белый</label>
-                            <input type="radio" name="color" value="black" id="black" class="radiob"/>
-                            <label for="black">чёрный</label>
-                        </div>
+                        <form id="radioForm">
+                            <div class="variable">
+                                <p style="float: left">Пол:</p>
+                                <input id="men" type="radio" name="sex" value="men" class="radiob" checked/>
+                                <label for="men">мужчина</label>
+                                <input id="women" type="radio" name="sex" value="women" class="radiob" />
+                                <label for="women">женщина</label>
+                            </div>
+                            <div class="variable">
+                                <p style="float: left">Цвет:</p>
+                                <input type="radio" name="color" value="white" id="white" class="radiob" checked/>
+                                <label for="white">белый</label>
+                                <input type="radio" name="color" value="black" id="black" class="radiob"/>
+                                <label for="black">чёрный</label>
+                            </div>
+                        </form>
                         <div class="ingredient">
-                            <img src="pic/arm-available.png">
-                            <img src="pic/arm-available.png">
-                            <img src="pic/leg.png">
-                            <img src="pic/leg-available.png">
-                            <img src="pic/nocucumber.png" style="padding-bottom: 5px">
+                            <img id="arm1" src="pic/noarm.png">
+                            <img id="arm2" src="pic/noarm.png">
+                            <img id="leg1" src="pic/noleg.png">
+                            <img id="leg2" src="pic/noleg.png">
+                            <img id="cucumber1" src="pic/nocucumber.png" style="padding-bottom: 5px">
                         </div>
                     </div>
                 </div>
@@ -116,13 +117,13 @@
                         <div class="bubble">Не хватает ручки, двух ножек и огуречика.</div>
                         <img src="pic/boiler.png" class="boiler">
                         <div class="button-boiler">
-                            <a class="buy-cucumber" href="javascript:void(0);">Сделать человечка</a>
+                            <a class="buy-cucumber" id="cookman" href="javascript:void(0);">Сделать человечка</a>
                             <div class="cost-text">за 10 монет</div>
                         </div>
                     </div>
                 </div>
                 <div class="production-table-man">
-                    <img src="pic/nomale.png">
+                    <img id="person" src="pic/nomale.png">
                 </div>
             </div>
         </div>
