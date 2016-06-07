@@ -175,7 +175,7 @@ header{
     //display: table-cell;
     vertical-align: top;
     //padding-right: 40px;
-  
+
 }
 .buy-hand, .buy-leg, .buy-cucumber{
   @include buttonGradient(#94c16c,#16a924);
@@ -328,11 +328,9 @@ input[type="radio"] + label{
 }
 .ingredient img{
   margin-right: 10px;
+  cursor: pointer;
 }
 
-.opacit{
-  opacity: 0.5;
-}
 
 
 

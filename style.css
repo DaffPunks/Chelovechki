@@ -314,9 +314,7 @@ input[type="radio"] + label {
   text-align: left; }
 
 .ingredient img {
-  margin-right: 10px; }
-
-.opacit {
-  opacity: 0.5; }
+  margin-right: 10px;
+  cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

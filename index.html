@@ -18,7 +18,7 @@
             <h2>Копилка</h2>
             <div class="coins">
                 <div class="moneystack">
-                    <div class="coin" id="coin1" style="margin-left: 0; z-index: 100"></div></div>
+                    <div class="coin" id="nocoin" style="margin-left: 0; opacity: 0.5"></div></div>
                 <div class="text" id="coins-count">
                     Нет монет
                 </div>
@@ -36,8 +36,8 @@
                     <a class="buy-leg" id="buyleg" href="javascript:void(0);">Купить ножку</a>
                     <div class="cost-text">за 7 монет</div>
 
-                    <div class="button b-left" id="buyhand">
-                        <a class="buy-hand"  href="javascript:void(0);">Купить ручку</a>
+                    <div class="button b-left" >
+                        <a class="buy-hand"  id="buyhand" href="javascript:void(0);">Купить ручку</a>
                         <div class="cost-text">за 5 монет</div>
                     </div>
 
@@ -114,7 +114,7 @@
                     <div class="paddertwo">
                         <i class="arrow"><i></i></i>
                         <i class="arrow-second"><i></i></i>
-                        <div class="bubble">Не хватает ручки, двух ножек и огуречика.</div>
+                        <div class="bubble" id="bubbletext">Не хватает ручки, двух ножек и огуречика.</div>
                         <img src="pic/boiler.png" class="boiler">
                         <div class="button-boiler">
                             <a class="buy-cucumber" id="cookman" href="javascript:void(0);">Сделать человечка</a>

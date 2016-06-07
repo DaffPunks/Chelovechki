@@ -1,7 +1,7 @@
 /**
  * Created by User on 06.06.2016.
  */
-var coins        = 1;
+var coins        = 0;
 var arms         = { value: 0 };
 var legs         = { value: 0 };
 var cucumbers    = { value: 0 };
@@ -23,9 +23,16 @@ function plusCoins() {
         updateText();
 
         var difference = 101 - coins;
-        $(".moneystack").append(
-            '<div class="coin" id="coin'+ coins +'" style=" display: none; z-index: ' + difference + '"></div>');
-        $("#coin" + coins).fadeIn( "slow" );
+        if(coins == 1) {
+            $(".moneystack").append(
+                '<div class="coin" id="coin' + coins + '" style=" display: none; margin-left: 0; z-index: ' + difference + '"></div>');
+            $("#coin" + coins).fadeIn("slow");
+        }
+        else{
+            $(".moneystack").append(
+                '<div class="coin" id="coin' + coins + '" style=" display: none; z-index: ' + difference + '"></div>');
+            $("#coin" + coins).fadeIn("slow");
+        }
     }
 }
 
@@ -125,9 +132,6 @@ function cookMan() {
             }
         }
     }
-
-
-
     updateText();
 }
 
@@ -159,6 +163,7 @@ function getNumEnding(iNumber, aEndings){
     }
     return sEnding;
 }
+
 function checkButtons() {
     if(coins >= 5){
         $("#buyhand").fadeTo('fast',1);
@@ -238,11 +243,92 @@ function checkSex() {
         $("#person").attr("src","pic/nowoman.png");
     }
 }
+function checkBubble() {
+    var String;
+    var phraseArray = [];
+    if(canBeCooked.value == true){
+        String = "Всё готово!";
+    }
+    else{
+        if(!chArm1.value || !chArm2.value){
+            phraseArray[0] = 1;
+            if(!chArm1.value && !chArm2.value){
+                phraseArray[0] = 2;
+            }
+            else{
+                phraseArray[0] = 0;
+            }
+        }
+        if(!chLeg1.value || !chLeg2.value){
+            phraseArray[1] = 1;
+            if(!chLeg1.value && !chLeg2.value){
+                phraseArray[1] = 2;
+            }
+            else{
+                phraseArray[1] = 0;
+            }
+        }
+        if(!chCucumber.value){
+            phraseArray[2] = 1;
+        }else{
+            phraseArray[2] = 0;
+        }
+        if(coins < 10){
+            phraseArray[3] = 1;
+        }else{
+            phraseArray[3] = 0;
+        }
+        String = "Не хватает ";
+
+        (phraseArray[0] == 2) ? String += "двух ручек" :
+            (phraseArray[0] == 1) ? String += "одной ручки" : null;
+        if( phraseArray[2] != 0 || phraseArray[3] != 0 || phraseArray[0] != 0)
+        {
+            (phraseArray[1] == 2) ? String += ", двух ножек" :
+                (phraseArray[1] == 1) ? String += ", одной ножки" : null;
+        }
+        else{
+            if(phraseArray[0] == 0){
+                (phraseArray[1] == 2) ? String += "двух ножек" :
+                    (phraseArray[1] == 1) ? String += "одной ножки" : null;
+            }
+            else{
+                (phraseArray[1] == 2) ? String += "и двух ножек" :
+                    (phraseArray[1] == 1) ? String += "и одной ножки" : null;
+            }
+        }
+        if(phraseArray[3] != 0 || (phraseArray[0] != 0 && phraseArray[1] != 0) )
+        {
+            (phraseArray[2] == 1) ? String += ", огуречика" : null;
+        }
+        else{
+            if(phraseArray[0] == 0 && phraseArray[1] == 0){
+                (phraseArray[2] == 1) ? String += "огуречика" : null;
+            }
+            else{
+                (phraseArray[2] == 1) ? String += " и огуречика" : null;
+            }
+        }
+        if(phraseArray[0] != 0 || phraseArray[1] != 0 || phraseArray[2] != 0 )
+        {
+            (phraseArray[3] == 1) ? String += " и 10 монет" : null;
+        }
+        else{
+            (phraseArray[3] == 1) ? String += "10 монет" : null;
+        }
+        String += ".";
+    }
+    $("#bubbletext").text(String);
+}
 function updateText() {
     if(coins == 0){
+        $("#nocoin").show();;
         $("#coins-count").text("Монет нет");
-    }else
-        $("#coins-count").text(coins + " " + getNumEnding(coins,["Монета","Монеты","Монет"]));
+    }else {
+        $("#nocoin").hide();
+        $("#coins-count").text(coins + " " + getNumEnding(coins, ["Монета", "Монеты", "Монет"]));
+    }
+
 
 
     $("#handamount").text("X " + arms.value);
@@ -268,6 +354,7 @@ function updateText() {
     checkButtons();
     checkInventory();
     checkProduction();
+    checkBubble();
 }
 
 $("#arm1")          .click(inventory.bind(null, arms, chArm1, "#arm1",        "pic/arm.png", "pic/arm-available.png"));
