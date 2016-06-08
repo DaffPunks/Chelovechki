@@ -250,65 +250,87 @@ function checkBubble() {
         String = "Всё готово!";
     }
     else{
+        //Arms
         if(!chArm1.value || !chArm2.value){
             phraseArray[0] = 1;
-            if(!chArm1.value && !chArm2.value){
-                phraseArray[0] = 2;
-            }
-            else{
-                phraseArray[0] = 0;
-            }
         }
+        if(!chArm1.value && !chArm2.value){
+            phraseArray[0] = 2;
+        }
+        if(chArm1.value && chArm2.value){
+            phraseArray[0] = 0;
+        }
+
+        //Legs
         if(!chLeg1.value || !chLeg2.value){
             phraseArray[1] = 1;
-            if(!chLeg1.value && !chLeg2.value){
-                phraseArray[1] = 2;
-            }
-            else{
-                phraseArray[1] = 0;
-            }
         }
+        if(!chLeg1.value && !chLeg2.value){
+            phraseArray[1] = 2;
+        }
+        if(chLeg1.value && chLeg2.value){
+            phraseArray[1] = 0;
+        }
+
+        //Cucumbers
         if(!chCucumber.value){
             phraseArray[2] = 1;
         }else{
             phraseArray[2] = 0;
         }
+        //Coins
         if(coins < 10){
             phraseArray[3] = 1;
         }else{
             phraseArray[3] = 0;
         }
+        //----------------------
         String = "Не хватает ";
-
+        //----------------------
         (phraseArray[0] == 2) ? String += "двух ручек" :
             (phraseArray[0] == 1) ? String += "одной ручки" : null;
-        if( phraseArray[2] != 0 || phraseArray[3] != 0 || phraseArray[0] != 0)
+        //----------------------
+        if( phraseArray[2] != 0 || phraseArray[3] != 0 )
         {
-            (phraseArray[1] == 2) ? String += ", двух ножек" :
-                (phraseArray[1] == 1) ? String += ", одной ножки" : null;
-        }
-        else{
-            if(phraseArray[0] == 0){
+            if(phraseArray[0] != 0){
+                (phraseArray[1] == 2) ? String += ", двух ножек" :
+                    (phraseArray[1] == 1) ? String += ", одной ножки" : null;
+            }
+            else{
                 (phraseArray[1] == 2) ? String += "двух ножек" :
                     (phraseArray[1] == 1) ? String += "одной ножки" : null;
             }
-            else{
-                (phraseArray[1] == 2) ? String += "и двух ножек" :
-                    (phraseArray[1] == 1) ? String += "и одной ножки" : null;
-            }
-        }
-        if(phraseArray[3] != 0 || (phraseArray[0] != 0 && phraseArray[1] != 0) )
-        {
-            (phraseArray[2] == 1) ? String += ", огуречика" : null;
         }
         else{
-            if(phraseArray[0] == 0 && phraseArray[1] == 0){
-                (phraseArray[2] == 1) ? String += "огуречика" : null;
+            if(phraseArray[0] != 0){
+                (phraseArray[1] == 2) ? String += " и двух ножек" :
+                    (phraseArray[1] == 1) ? String += " и одной ножки" : null;
             }
-            else{
-                (phraseArray[2] == 1) ? String += " и огуречика" : null;
+            else {
+                (phraseArray[1] == 2) ? String += "двух ножек" :
+                    (phraseArray[1] == 1) ? String += "одной ножки" : null;
             }
         }
+        //----------------------
+        if(phraseArray[3] != 0)
+        {
+            if(phraseArray[0] != 0 || phraseArray[1] != 0){
+                (phraseArray[2] == 1) ? String += ", огуречика" : null;
+            }
+            else{
+                (phraseArray[2] == 1) ? String += "огуречика" : null;
+            }
+
+        }
+        else{
+            if(phraseArray[0] != 0 || phraseArray[1] != 0){
+                (phraseArray[2] == 1) ? String += " и огуречика" : null;
+            }
+            else{
+                (phraseArray[2] == 1) ? String += "огуречика" : null;
+            }
+        }
+        //----------------------
         if(phraseArray[0] != 0 || phraseArray[1] != 0 || phraseArray[2] != 0 )
         {
             (phraseArray[3] == 1) ? String += " и 10 монет" : null;
@@ -316,6 +338,7 @@ function checkBubble() {
         else{
             (phraseArray[3] == 1) ? String += "10 монет" : null;
         }
+        //----------------------
         String += ".";
     }
     $("#bubbletext").text(String);
