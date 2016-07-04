@@ -1,4 +1,4 @@
-@import "node_modules/susy/sass/susy";
+@import "../node_modules/susy/sass/_susy";
 
 @mixin filter-gradient($top, $btm) {
   background: $top;
@@ -58,7 +58,7 @@ $line_color_stop:  rgba(44,82,117,0);
 body {
   //@include container;
   @include filter-gradient(#020d18,#07487e);
-  //height: 1500px;
+  height: 1366px;
   font-family: Arial sans-serif;
   color: white;
 }
@@ -132,7 +132,7 @@ header{
   margin: 0 auto;
   width: 24px;
   height: 29px;
-  background-image: url("pic/coins.png");
+  background-image: url("../pic/coins.png");
 }
 .clicker {
   display: inline-block;
@@ -177,6 +177,9 @@ header{
     //padding-right: 40px;
 
 }
+.not-available{
+  opacity: 0.5;
+}
 .buy-hand, .buy-leg, .buy-cucumber{
   @include buttonGradient(#94c16c,#16a924);
   font-weight: bold;
@@ -204,21 +207,77 @@ header{
   padding-top: 10px;
   font: 14px Arial;
 }
-.amount{
-  color: #d74545;
-  position: absolute;
-  width: 150px;
-  height: 100px;
-}
 .sellimg{
   padding-left: 20px;
   float: left;
 }
 .amount{
-  position: relative;
+  //position: relative;
   padding-top: 30px;
   font-size: 36px;
 }
+.count-wrapper{
+  margin-left: 20px;
+  height: 130px;
+  width: 150px;
+}
+
+.any{
+  color: #FFFFFF;
+}
+.no-any{
+  color: #d74545;
+}
+
+.leg{
+  float:left;
+  height: 108px;
+  width: 42px;
+  background: url(../pic/leg.png) no-repeat;
+}
+.leg-checked{
+  background-position-x: 0;
+}
+.leg-available{
+  background-position-x: -47px;
+}
+.leg-not-available{
+  background-position-x: -94px;
+}
+
+.arm{
+  float:left;
+  height: 105px;
+  width: 36px;
+  background: url(../pic/arm.png) no-repeat;
+}
+.arm-checked{
+  background-position-x: 0;
+}
+.arm-available{
+  background-position-x: -41px;
+}
+.arm-not-available{
+  background-position-x: -82px;
+}
+
+.cucumber{
+  float:left;
+  height: 98px;
+  width: 46px;
+  background: url(../pic/cucumber.png) no-repeat;
+}
+.cucumber-checked{
+  background-position-x: 0;
+}
+.cucumber-available{
+  background-position-x: -51px;
+}
+.cucumber-not-available{
+  background-position-x: -102px;
+}
+
+
 
 /* -- Production -- */
 #production{
@@ -245,10 +304,6 @@ header{
   @include span(4 last);
   padding-bottom: 100px;
   position: relative;
-}
-.production-table-man img{
-  position: absolute;
-  right: 0;
 }
 .variable{
   text-align: left;
@@ -326,10 +381,32 @@ input[type="radio"] + label{
   padding-top: 55px;
   text-align: left;
 }
-.ingredient img{
+.ingredient div{
   margin-right: 10px;
   cursor: pointer;
 }
+
+
+.production-table-man div{
+  position: absolute;
+  right: 0;
+  height: 490px;
+  width: 184px;
+  background: url(../pic/peoples.png) no-repeat;
+}
+.man{
+  //background: url(../pic/peoples.png) no-repeat;
+  background-position: 0 0 !important;
+}
+.woman{
+  background-position: -10px -490px !important;
+}
+.white{
+  background-position-x: -193px !important;
+}
+.black{
+   background-position-x: -377px !important;
+ }
 
 
 

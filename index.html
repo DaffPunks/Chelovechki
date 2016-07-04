@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Фабрика человечков</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="jquery-2.2.4.min.js"></script>
 </head>
 <body>
@@ -54,22 +54,28 @@
             <h2>Ингредиенты в мешке</h2>
             <div class="buttons marketbuttons">
                 <div class="button b-center">
+                    <div class="count-wrapper">
+                        <div class="leg leg-checked"></div>
+                        <div class="amount leg-amount no-any" id="legamount">X 0</div>
+                    </div>
 
-                    <img src="pic/leg.png" class="sellimg">
-                    <div class="amount leg-amount" id="legamount">X 0</div>
                     <a class="sell-leg" id="sellleg" href="javascript:void(0);" >Продать одну</a>
                     <div class="cost-text">за 5 монет</div>
 
                     <div class="button b-left">
-                        <img src="pic/arm.png" class="sellimg">
-                        <div class="amount hand-amount" id="handamount">X 0</div>
+                        <div class="count-wrapper">
+                            <div class="arm arm-checked"></div>
+                            <div class="amount hand-amount no-any" id="handamount">X 0</div>
+                        </div>
                         <a class="sell-hand" id="sellhand" href="javascript:void(0);" >Продать одну</a>
                         <div class="cost-text">за 3 монет</div>
                     </div>
 
                     <div class="button b-right">
-                        <img src="pic/cucumber.png" class="sellimg">
-                        <div class="amount cucumber-amount" id="cucumberamount">X 0</div>
+                        <div class="count-wrapper">
+                            <div class="cucumber cucumber-checked"></div>
+                            <div class="amount cucumber-amount no-any" id="cucumberamount">X 0</div>
+                        </div>
                         <a class="sell-cucumber" id="sellcucumber" href="javascript:void(0);" >Продать один</a>
                         <div class="cost-text">за 15 монет</div>
                     </div>
@@ -101,11 +107,11 @@
                             </div>
                         </form>
                         <div class="ingredient">
-                            <img id="arm1" src="pic/noarm.png">
-                            <img id="arm2" src="pic/noarm.png">
-                            <img id="leg1" src="pic/noleg.png">
-                            <img id="leg2" src="pic/noleg.png">
-                            <img id="cucumber1" src="pic/nocucumber.png" style="padding-bottom: 5px">
+                            <div id="arm1" class="arm arm-not-available"></div>
+                            <div id="arm2" class="arm arm-not-available"></div>
+                            <div id="leg1" class="leg leg-not-available"></div>
+                            <div id="leg2" class="leg leg-not-available"></div>
+                            <div id="cucumber" class="cucumber cucumber-not-available" style="padding-bottom: 5px"></div>
                         </div>
                     </div>
                 </div>
@@ -122,11 +128,11 @@
                     </div>
                 </div>
                 <div class="production-table-man">
-                    <img id="person" src="pic/nomale.png">
+                    <div id="person" class="man">
                 </div>
             </div>
         </div>
     </section>
-    <script src="script.js"></script>
+    <script src="script/typescript.js"></script>
 </body>
 </html>
